@@ -1,0 +1,2 @@
+from sentiment_analysis.models.model import MyNeuralNet
+from sentiment_analysis.predict_model import predict
