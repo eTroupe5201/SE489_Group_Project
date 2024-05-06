@@ -9,6 +9,6 @@ def load_pretrained_model():
 if __name__ == '__main__':
     # Load the pre-trained model
     model = load_pretrained_model()
-
+    
     # Print the model architecture
     print("Pre-trained model loaded successfully! Here are the details: ")
