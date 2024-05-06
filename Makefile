@@ -19,12 +19,20 @@ PYTHON_INTERPRETER = python
 ## Set up python interpreter environment
 create_environment:
 	conda create --name $(PROJECT_NAME) python=$(PYTHON_VERSION) --no-default-packages -y
-
+	conda activate --name $(PROJECT_NAME)
+	
 ## Install Python Dependencies
 requirements:
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 	$(PYTHON_INTERPRETER) -m pip install -e .
+
+## Install DVC
+install_dvc:
+	@echo "Installing DVC..."
+	curl -LJO https://github.com/iterative/dvc/archive/refs/tags/$(DVC_VERSION).tar.gz
+	tar -xvf dvc-$(DVC_VERSION).tar.gz
+	cd dvc-$(DVC_VERSION) && $(PYTHON_INTERPRETER) setup.py install
 
 ## Install Developer Python Dependencies
 dev_requirements: requirements
