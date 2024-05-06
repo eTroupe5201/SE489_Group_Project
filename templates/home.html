@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form id="sentiment-form">
+        <label for="input-text">Enter your text:</label><br>
+        <textarea id="input-text" name="input-text" rows="4" cols="50"></textarea><br>
+        <button type="submit">Predict Sentiment</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        // JavaScript to handle form submission and display results
+        document.getElementById('sentiment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            var formData = new FormData(this);
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: formData.get('input-text') }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Predicted Sentiment: ' + data.prediction;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
