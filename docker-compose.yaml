@@ -5,8 +5,12 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/train_model.dockerfile
+      args:
+        -DVC=true
   predict:
     image: predict:latest
     build:
       context: .
       dockerfile: dockerfiles/predict_model.dockerfile
+      args:
+        -DVC=true

@@ -60,3 +60,10 @@ The directory structure of the project looks like this:
 
 Created using [cookiecutter template](https://github.com/cookiecutter/cookiecutter) for getting
 started with Machine Learning Operations (MLOps).
+
+###Software And Tools Requirements
+
+1. [Github Account](https://github.com)
+2. [HerokuAccount](https://heroku.com) #github pages instead
+2. [VSCodeIDE] (https://code.visualstudio.com/)
+3. [GitCLI](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line)

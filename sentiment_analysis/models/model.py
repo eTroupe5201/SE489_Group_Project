@@ -1,26 +1,14 @@
-import torch
+from transformers import DistilBertForSequenceClassification
 
-class MyNeuralNet(torch.nn.Module):
-    """ Basic neural network class. 
-    
-    Args:
-        in_features: number of input features
-        out_features: number of output features
-    
-    """
-    def __init__(self, in_features: int, out_features: int) -> None:
-        self.l1 = torch.nn.Linear(in_features, 500)
-        self.l2 = torch.nn.Linear(500, out_features)
-        self.r = torch.nn.ReLU()
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Forward pass of the model.
-        
-        Args:
-            x: input tensor expected to be of shape [N,in_features]
+def load_pretrained_model():
+    # Initialize and return the pre-trained model
+    model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
+    return model
 
-        Returns:
-            Output tensor with shape [N,out_features]
+# Define any other functions related to your model architecture here
+if __name__ == '__main__':
+    # Load the pre-trained model
+    model = load_pretrained_model()
 
-        """
-        return self.l2(self.r(self.l1(x)))
+    # Print the model architecture
+    print("Pre-trained model loaded successfully! Here are the details: ")
